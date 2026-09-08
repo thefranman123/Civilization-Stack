@@ -1,0 +1,8 @@
+{
+  "name": "Civilization Stack",
+  "short_name": "CivStack",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#050816",
+  "start_url": "./"
+}

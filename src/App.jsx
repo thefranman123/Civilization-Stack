@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import { NODES } from "./data/nodes";
 import { calculateAllocation } from "./engine/allocationEngine";
-5 import { rankOpportunities } from "./engine/pulseEngine";
+import { rankOpportunities } from "./engine/pulseEngine";
 export default function App() {
   const [capital, setCapital] = useState(100000);
   const [corePct, setCorePct] = useState(60);

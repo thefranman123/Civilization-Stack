@@ -1,18 +1,13 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Civilization Stack</title><link rel="manifest" href="manifest.json"><style>
-body{margin:0;background:#050816;color:#fff;font-family:Inter,system-ui}#boot{position:fixed;inset:0;background:#02030a;display:flex;flex-direction:column;justify-content:center;align-items:center;transition:opacity .8s}#boot.hidden{opacity:0;pointer-events:none}.globe{width:130px;height:130px;border-radius:50%;border:2px solid #60a5fa;box-shadow:0 0 40px #2563eb;animation:pulse 2s infinite}@keyframes pulse{50%{transform:scale(1.05);box-shadow:0 0 80px #60a5fa}}nav{position:fixed;bottom:0;left:0;right:0;background:#0b1020;display:flex;border-top:1px solid #223}nav button{flex:1;background:none;border:0;color:#9fb4ff;padding:14px}.page{display:none;padding:22px 18px 90px}.page.active{display:block}.card{background:#101827;border:1px solid #223;border-radius:18px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.kpi{background:#0d1325;border-radius:14px;padding:12px}.bar{height:8px;background:#1b2945;border-radius:999px}.fill{height:100%;background:#60a5fa;border-radius:999px}.node{cursor:pointer;fill:#0f172a;stroke:#60a5fa}.slider{width:100%}</style></head><body>
-<div id=boot><div class=globe></div><h1>Civilization Stack</h1><div>Mission Control Initializing…</div></div>
-<div id=app style="opacity:0;transition:opacity .8s">
-<div class="page active" id=home><h1>Mission Control</h1><div class=card><div>Portfolio</div><h2 id=val>$100,000</h2><input id=cap type=range min=10000 max=1000000 value=100000 class=slider oninput=u()><div class=grid><div class=kpi><b id=core>$80,000</b><br>Core</div><div class=kpi><b id=sat>$20,000</b><br>Satellite</div><div class=kpi><b>91</b><br>Civilization Score</div><div class=kpi><b>Cooling</b><br>Top Bottleneck</div></div></div><div class=card><h3>Morning Radar</h3><ul><li>Cooling remains highest bottleneck.</li><li>Grid resilience improving.</li><li>Watch Oracle buy zone.</li><li>TEPCO remains a Power Node.</li></ul></div></div>
-<div class=page id=tree><h1>Technology Tree</h1><div class=card><svg viewBox="0 0 320 360" width="100%"><line x1=160 y1=45 x2=90 y2=130 stroke=#335/><line x1=160 y1=45 x2=230 y2=130 stroke=#335/><line x1=90 y1=130 x2=50 y2=250 stroke=#335/><line x1=90 y1=130 x2=130 y2=250 stroke=#335/><line x1=230 y1=130 x2=190 y2=250 stroke=#335/><line x1=230 y1=130 x2=270 y2=250 stroke=#335/><g onclick="n('Core: SPMO Momentum Engine')"><circle class=node cx=160 cy=45 r=28/><text x=160 y=50 text-anchor=middle fill=white font-size=12>Core</text></g><g onclick="n('Compute: NVDA ORCL NBIS INTC')"><circle class=node cx=90 cy=130 r=24/><text x=90 y=135 text-anchor=middle fill=white font-size=10>Compute</text></g><g onclick="n('Power: CEG CCJ EDF TEPCO')"><circle class=node cx=230 cy=130 r=24/><text x=230 y=135 text-anchor=middle fill=white font-size=10>Power</text></g><g onclick="n('Cooling: VRT')"><circle class=node cx=50 cy=250 r=20/><text x=50 y=255 text-anchor=middle fill=white font-size=9>Cooling</text></g><g onclick="n('Network: ANET LITE COHR')"><circle class=node cx=130 cy=250 r=20/><text x=130 y=255 text-anchor=middle fill=white font-size=9>Network</text></g><g onclick="n('Grid: ETN GEV')"><circle class=node cx=190 cy=250 r=20/><text x=190 y=255 text-anchor=middle fill=white font-size=9>Grid</text></g><g onclick="n('Defense: LMT')"><circle class=node cx=270 cy=250 r=20/><text x=270 y=255 text-anchor=middle fill=white font-size=9>Defense</text></g></svg><p id=info>Tap any node.</p></div></div>
-<div class=page id=sim><h1>Bottleneck Engine</h1><div class=card><label>AI Demand</label><input id=a type=range class=slider value=50 oninput=sc()><label>Power Prices</label><input id=p type=range class=slider value=50 oninput=sc()><label>Rare Earth Exports</label><input id=r type=range class=slider value=50 oninput=sc()><h3>Cooling Score: <span id=cs>91</span></h3><div class=bar><div id=f class=fill style="width:91%"></div></div></div></div>
-<div class=page id=map><h1>World Infrastructure</h1><div class=card><svg viewBox="0 0 340 180" width="100%"><rect width=340 height=180 fill=#08111f/><circle cx=90 cy=70 r=7 fill=#60a5fa/><circle cx=180 cy=80 r=7 fill=#60a5fa/><circle cx=275 cy=85 r=7 fill=#60a5fa/><circle cx=285 cy=92 r=5 fill=#3b82f6/><line x1=90 y1=70 x2=180 y2=80 stroke=#60a5fa/><line x1=180 y1=80 x2=275 y2=85 stroke=#60a5fa/></svg><p>North America • Europe • Japan (TEPCO) connected as global infrastructure nodes.</p></div></div>
-<nav><button onclick="show('home')">Home</button><button onclick="show('tree')">Tree</button><button onclick="show('sim')">Engine</button><button onclick="show('map')">World</button></nav></div>
-<script>
-setTimeout(()=>{boot.classList.add('hidden');app.style.opacity=1},1800);
-function m(v){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v)}
-function u(){let v=+cap.value;val.textContent=m(v);core.textContent=m(v*.8);sat.textContent=m(v*.2)}
-function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function n(t){info.textContent=t}
-function sc(){let s=Math.min(100,Math.round((+a.value*.45)+(+p.value*.35)+(100-+r.value)*.2));cs.textContent=s;f.style.width=s+'%'}
-if('serviceWorker' in navigator)navigator.serviceWorker.register('service-worker.js')
-</script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>civilization-stack</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
